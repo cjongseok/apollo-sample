@@ -14,3 +14,7 @@ It uses Github.com's GraphQL server, so all you need to do is just compile and r
 echo "sdk.dir=/your/Android/SDK/home" > local.properties
 gradle installDebug
 ```
+
+Caveat
+---
+Github limits the query rate. See [rate-limit](https://developer.github.com/v4/guides/resource-limitations/#rate-limit).
