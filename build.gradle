@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+  apply from: rootProject.file("gradle/dependencies.gradle")
+  repositories {
+    google() // Gradle 4.0+
+    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+  }
+
+  dependencies {
+    classpath dep.androidPlugin
+    classpath dep.apolloPlugin
+    classpath "com.android.tools.build:gradle:3.0.1"
+  }
+}
+
+android {
+  compileSdkVersion androidConfig.compileSdkVersion
+//  buildToolsVersion androidConfig.buildToolsVersion
+
+  defaultConfig {
+    applicationId "com.example.apollographql.sample"
+    minSdkVersion androidConfig.minSdkVersion
+    targetSdkVersion androidConfig.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    vectorDrawables.useSupportLibrary = true
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+//  lintOptions {
+//    textReport true
+//    textOutput 'stdout'
+//    ignore 'InvalidPackage', 'GoogleAppIndexingWarning', 'AllowBackup'
+//  }
+}
+
+apply plugin: 'com.apollographql.android'
+
+repositories {
+  google() // Gradle 4.0+
+  maven { url "https://plugins.gradle.org/m2/" }
+  maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+dependencies {
+  provided dep.jsr305
+
+  compile "com.apollographql.apollo:apollo-runtime:$apolloReleaseVersion"
+  compile "com.apollographql.apollo:apollo-android-support:$apolloReleaseVersion"
+  compile "com.apollographql.apollo:apollo-rx2-support:$apolloReleaseVersion"
+  compile dep.appcompat
+  compile dep.okhttpLoggingInterceptor
+  compile dep.recyclerView
+  compile dep.rxandroid
+  compile dep.rxjava2
+
+  testCompile dep.junit
+}
