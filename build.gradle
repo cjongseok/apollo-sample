@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 buildscript {
-  apply from: rootProject.file("gradle/dependencies.gradle")
+  apply from: file("gradle/dependencies.gradle")
   repositories {
     google() // Gradle 4.0+
     maven { url "https://plugins.gradle.org/m2/" }
