@@ -1,6 +1,6 @@
 apollo-sample
 ===
-Portable version of official apollo-android example, [apollographql/apollo-android/apollo-sample](https://github.com/apollographql/apollo-android/tree/master/apollo-sample).
+Portable version of the official apollo-android example, [apollographql/apollo-android/apollo-sample](https://github.com/apollographql/apollo-android/tree/master/apollo-sample).
 
 It is a fork of the official example but huge apollo-android Gradle project.
 Instead of compiling all the Apollo stuffs from the scratch, it just uses the releases.
